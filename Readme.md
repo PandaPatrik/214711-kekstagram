@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Игорь Патрикеев](https://up.htmlacademy.ru/javascript/10/user/214711).
-* Наставник: `Евгений Сальников`.
+* Наставник: [Евгений Сальников](https://htmlacademy.ru/profile/id24537).
 
 ---
 
