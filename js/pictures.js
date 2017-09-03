@@ -8,14 +8,14 @@ var COMMENTS_ARRAY = [
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-];
+]; // //массив с комментами
 
 
 var randomInteger = function (min, max) {
   var rand = min + Math.random() * (max - min);
   rand = Math.round(rand);
   return rand;
-}
+} //рандомизатор
 
 var creationArray = function () {
 var myArray = [];
@@ -32,18 +32,27 @@ for (var i = 0; i < twentyFive; i++) {
   return myArray;
 } ;
 
-var similarListElement = document.querySelector('.picture-template'); // я не очень понимаю что я этим делаю ТУТ. это же я обращаюсь к этому объекту для добавления к нему послдедующих фотографий, так?
-var pictureTemplate = document.querySelector('#picture-template').content;
+var requestToObject = document.querySelector('.picture-template');
+var requestToObjectContent = document.querySelector('#picture-template').content;
 
-var picturesData = creationArray();
+var picturesData = creationArray(myArray);
 
-for (var i = 0; i < picturesData.length; i++) { //клонирует 4х волшебников
-  var picturesElement = pictureTemplate.cloneNode(true);
-  picturesElement.querySelector('.picture-template').src = picturesData[i].url; //или мне нужно обратиться к первому дочернему элементу "picture-template" ??
+for (var i = 0; i < picturesData.length; i++) { //создаёт 25 фотографий.
+  var picturesElement = requestToObjectContent.cloneNode(true);
+  picturesElement.querySelector('img').src = picturesData[i].url;
   picturesElement.querySelector('.picture-comments').content = picturesData[i].comments;
   picturesElement.querySelector('.picture-likes').content = picturesData[i].likes;
-  //similarListElement.appendChild(wizardElement);
+  requestToObject.appendChild();
 }
+
+var fragment = document.createDocumentFragment(); //или нам тут нужно найти через querySelector #pictures и записать это в контент его?
+for (var i = 0; i < myArray.length; i++) {
+  fragment.appendChild(picturesElement(myArray[i]));
+}
+requestToObject.appendChild(fragment);
+
+
+
 
 //----------------------------------------------------------------------------------------------------------------------------------
 document.querySelector('.upload-overlay').classList.add('hidden'); //но у него уже есть hidden!!
@@ -56,4 +65,6 @@ document.querySelector('.gallery-overlay').content;
 //'gallery-overlay-controls-like'
 //'gallery-overlay-controls-comments'
 
-//5----------------------------------------------------------------------------------------------------------------------------------
+//5---------------------------------------------------------------------------------------------------------------------------------
+
+Кароче я запутался нахрен. :(
