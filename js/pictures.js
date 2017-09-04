@@ -17,54 +17,48 @@ var randomInteger = function (min, max) {
   return rand;
 } //рандомизатор
 
-var creationArray = function () {
-var myArray = [];
-
-for (var i = 0; i < twentyFive; i++) {
-    var obj = {};
-
-    obj.url = 'photos/' + i + '.jpg';
-    obj.likes = randomInteger(15, 200);
-    obj.comments = COMMENTS_ARRAY[randomInteger(0, COMMENTS_ARRAY.length)];
-
-    myArray.push(obj);
+var generateCommets = function () {
+  var commentsArray = [];
+  for (i=0; i < randomInteger(1,2); i++) {
+    commentsArray.push(COMMENTS_ARRAY[randomInteger(0, COMMENTS_ARRAY.length)])
   }
-  return myArray;
-} ;
+  return commentsArray;
+}
+//почему он оставляет слово кооментариев. тогда нужно написать количество комментариев в одну позицию, а сами комменты в другую!
+var generatePictures = function () {
+  var myArray = [];
 
-var requestToObject = document.querySelector('.picture-template');
-var requestToObjectContent = document.querySelector('#picture-template').content;
+  for (var i = 1; i <= twentyFive; i++) {
+      var obj = {};
 
-var picturesData = creationArray(myArray);
+      obj.url = 'photos/' + i + '.jpg';
+      obj.likes = randomInteger(15, 200);
+      obj.comments = generateCommets();
+      myArray.push(obj);
+    }
+    return myArray;
+  };
 
-for (var i = 0; i < picturesData.length; i++) { //создаёт 25 фотографий.
-  var picturesElement = requestToObjectContent.cloneNode(true);
+var picturesPlace = document.querySelector('.pictures');
+var templateElement = document.querySelector('#picture-template').content;
+
+var picturesData = generatePictures();
+
+
+var fragment = document.createDocumentFragment()
+for (var i = 0; i < picturesData.length; i++) {
+  var picturesElement = templateElement.cloneNode(true);
   picturesElement.querySelector('img').src = picturesData[i].url;
   picturesElement.querySelector('.picture-comments').content = picturesData[i].comments;
   picturesElement.querySelector('.picture-likes').content = picturesData[i].likes;
-  requestToObject.appendChild();
+  fragment.appendChild(picturesElement);
 }
+picturesPlace.appendChild(fragment);
 
-var fragment = document.createDocumentFragment(); //или нам тут нужно найти через querySelector #pictures и записать это в контент его?
-for (var i = 0; i < myArray.length; i++) {
-  fragment.appendChild(picturesElement(myArray[i]));
-}
-requestToObject.appendChild(fragment);
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------
-document.querySelector('.upload-overlay').classList.add('hidden'); //но у него уже есть hidden!!
+//-----------------------------------------------------------------------------------------------------------------------------------
+document.querySelector('.upload-overlay').classList.add('hidden');
 //4----------------------------------------------------------------------------------------------------------------------------------
 document.querySelector('.gallery-overlay').classList.remove('hidden');
-document.querySelector('.gallery-overlay').content;
-
-
-//'gallery-overlay-image'
-//'gallery-overlay-controls-like'
-//'gallery-overlay-controls-comments'
-
-//5---------------------------------------------------------------------------------------------------------------------------------
-
-Кароче я запутался нахрен. :(
+document.querySelector('.gallery-overlay-image').src = picturesData[1].url;
+document.querySelector('.likes-count').textContent = picturesData[1].likes;
+document.querySelector('.comments-count').textContent = picturesData[1].comments;
