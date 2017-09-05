@@ -15,11 +15,11 @@ var randomInteger = function (min, max) {
   var rand = min + Math.random() * (max - min);
   rand = Math.round(rand);
   return rand;
-} //рандомизатор
+}
 
 var generateCommets = function () {
   var commentsArray = [];
-  for (i=0; i < randomInteger(1,2); i++) {
+  for (i = 0; i < randomInteger(1, 2); i++) {
     commentsArray.push(COMMENTS_ARRAY[randomInteger(0, COMMENTS_ARRAY.length)])
   }
   return commentsArray;
@@ -29,13 +29,12 @@ var generatePictures = function () {
   var myArray = [];
 
   for (var i = 1; i <= twentyFive; i++) {
-      var obj = {};
-
-      obj.url = 'photos/' + i + '.jpg';
-      obj.likes = randomInteger(15, 200);
-      obj.comments = generateCommets();
-      myArray.push(obj);
-    }
+    var obj = {};
+    obj.url = 'photos/' + i + '.jpg';
+    obj.likes = randomInteger(15, 200);
+    obj.comments = generateCommets();
+    myArray.push(obj);
+  }
     return myArray;
   };
 
