@@ -15,16 +15,16 @@ var randomInteger = function (min, max) {
   var rand = min + Math.random() * (max - min);
   rand = Math.round(rand);
   return rand;
-}
+};
 
 var generateCommets = function () {
   var commentsArray = [];
   for (i = 0; i < randomInteger(1, 2); i++) {
-    commentsArray.push(COMMENTS_ARRAY[randomInteger(0, COMMENTS_ARRAY.length)])
+    commentsArray.push(COMMENTS_ARRAY[randomInteger(0, COMMENTS_ARRAY.length)]);
   }
   return commentsArray;
-}
-//почему он оставляет слово кооментариев. тогда нужно написать количество комментариев в одну позицию, а сами комменты в другую!
+};
+// почему он оставляет слово кооментариев. тогда нужно написать количество комментариев в одну позицию, а сами комменты в другую!
 var generatePictures = function () {
   var myArray = [];
 
@@ -35,8 +35,8 @@ var generatePictures = function () {
     obj.comments = generateCommets();
     myArray.push(obj);
   }
-    return myArray;
-  };
+  return myArray;
+};
 
 var picturesPlace = document.querySelector('.pictures');
 var templateElement = document.querySelector('#picture-template').content;
@@ -44,7 +44,7 @@ var templateElement = document.querySelector('#picture-template').content;
 var picturesData = generatePictures();
 
 
-var fragment = document.createDocumentFragment()
+var fragment = document.createDocumentFragment();
 for (var i = 0; i < picturesData.length; i++) {
   var picturesElement = templateElement.cloneNode(true);
   picturesElement.querySelector('img').src = picturesData[i].url;
@@ -54,9 +54,9 @@ for (var i = 0; i < picturesData.length; i++) {
 }
 picturesPlace.appendChild(fragment);
 
-//-----------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------
 document.querySelector('.upload-overlay').classList.add('hidden');
-//4----------------------------------------------------------------------------------------------------------------------------------
+// 4----------------------------------------------------------------------------------------------------------------------------------
 document.querySelector('.gallery-overlay').classList.remove('hidden');
 document.querySelector('.gallery-overlay-image').src = picturesData[1].url;
 document.querySelector('.likes-count').textContent = picturesData[1].likes;
