@@ -60,4 +60,4 @@ document.querySelector('.upload-overlay').classList.add('hidden');
 document.querySelector('.gallery-overlay').classList.remove('hidden');
 document.querySelector('.gallery-overlay-image').src = picturesData[1].url;
 document.querySelector('.likes-count').textContent = picturesData[1].likes;
-document.querySelector('.comments-count').textContent = picturesData[1].comments;
+document.querySelector('.comments-count').textContent = picturesData[1].comments.length
