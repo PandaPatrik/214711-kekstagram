@@ -51,8 +51,28 @@ for (var i = 0; i < picturesData.length; i++) {
 }
 
 picturesPlace.appendChild(fragment);
-document.querySelector('.upload-overlay').classList.add('hidden');
-document.querySelector('.gallery-overlay').classList.remove('hidden');
+// document.querySelector('.upload-overlay').classList.add('hidden');
+// document.querySelector('.gallery-overlay').classList.remove('hidden');
 document.querySelector('.gallery-overlay-image').src = picturesData[1].url;
 document.querySelector('.likes-count').textContent = picturesData[1].likes;
 document.querySelector('.comments-count').textContent = picturesData[1].comments.length;
+
+var picturesBox = document.querySelector('.pictures');
+var pictureElement = picturesBox.querySelector('.picture');
+var galleryElement = document.querySelector('.gallery-overlay');
+var galleryClose = document.querySelector('.gallery-overlay-close');
+
+pictureElement.addEventListener('click', function() {
+  // galleryElement.classList.remove('hidden');
+  console.log(25);
+});
+
+galleryClose.addEventListener('click', function() {
+  // galleryElement.classList.add('hidden');
+  console.log(56);
+});
+
+console.log(picturesBox);
+console.log(pictureElement);
+console.log(galleryElement);
+console.log(galleryClose);
